@@ -9,3 +9,6 @@ def read_root():
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
+
+from backend.routers import qna
+app.include_router(qna.router)
