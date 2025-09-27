@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from backend.routers import qna
 
 app = FastAPI()
 
@@ -10,5 +11,4 @@ def read_root():
 def health_check():
     return {"status": "ok"}
 
-from backend.routers import qna
 app.include_router(qna.router)
