@@ -12,3 +12,6 @@ def health_check():
     return {"status": "ok"}
 
 app.include_router(qna.router)
+
+from backend.routers import quiz
+app.include_router(quiz.router)
