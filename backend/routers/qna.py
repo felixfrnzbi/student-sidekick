@@ -23,3 +23,17 @@ def ask_question(question: Question):
     if "gravity" in question.query.lower():
         return {"answer": "Gravity is a force that attracts objects toward each other."}
     return {"answer": "I'm still learning. Try asking about gravity!"}
+
+from fastapi import APIRouter
+from pydantic import BaseModel
+from backend.logic.qna_solver import answer_question
+
+router = APIRouter()
+
+class Question(BaseModel):
+    query: str
+
+@router.post("/qna/ask")
+def ask_question(question: Question):
+    response = answer_question(question.query)
+    return {"answer": response}
