@@ -1,7 +1,9 @@
+from backend.routers import coach
 from fastapi import FastAPI
 from backend.routers import qna
 
 app = FastAPI()
+app.include_router(coach.router)
 
 @app.get("/")
 def read_root():
